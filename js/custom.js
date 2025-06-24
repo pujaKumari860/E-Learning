@@ -97,3 +97,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+
+// testimonial slider
+
+// for home page course slider
+$(".testimonial-slider").slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  prevArrow: $(".testimonial-arrows .testimonial-prev"),
+  nextArrow: $(".testimonial-arrows .testimonial-next"),
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+        arrows: false, // Disable arrows on smaller screens
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+});
+
+// filter top course tab
+const filterButtons = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".role-item");
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    const filter = button.dataset.filter;
+    cards.forEach(card => {
+      if (filter === "all" || card.dataset.category === filter) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});

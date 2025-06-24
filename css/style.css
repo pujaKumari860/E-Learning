@@ -17,8 +17,10 @@
     --button-pri-color: #000;
     --button-bg-color: #f0c71d;
     --white-color: #fff;
-
 }
+body{
+    font-family: "Inter", sans-serif;
+}  
 
 h1, h2, h3, h4, h5, h6{
 font-family: "Inter", sans-serif;
@@ -69,6 +71,18 @@ ul li{
  .nav-button .light-bttn:hover{
    background: var(--light-green);
    transition: all 0.5s ease;
+   border: 1px solid var(--light-green);
+ }
+ .nav-button .dark-bttn{
+    border: 1px solid  var(--Dark-gray);
+    color: var(--Dark-gray);
+    padding: 10px 40px;
+    border-radius: 6px;
+ }
+ .nav-button .dark-bttn:hover{
+   background: var(--light-green);
+   transition: all 0.5s ease;
+   color: var(--white-color);
    border: 1px solid var(--light-green);
  }
  .nav-button .main-bttn{
@@ -428,11 +442,12 @@ box-shadow: none;
             justify-content: end;
         }
         
-   
-        
         .social-icons a:hover {
             color: #495057;
             transform: translateY(-2px);
+        }
+        .social-icons a {
+            color: #495057;
         }
         
         .copyright {
@@ -452,11 +467,6 @@ box-shadow: none;
          transition: all 0.5s ease;
         }
   
-
-   
-
- 
-
 
     .custom-arrows button {
       background-color: var(--Dark-green);
@@ -486,4 +496,185 @@ box-shadow: none;
 }
 .testi-bg{
    background: var(--Dark-green);
+}
+
+/* testimonial home start style */
+.testimonial-box {
+   background-color: #fff;
+   border-radius: 15px;
+   padding: 40px;
+   height: 100%;
+   min-height: 442px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+ }
+ .testimonial-text {
+   font-size: 2.5rem;
+   font-weight: 500;
+   line-height: 1.5;
+ }
+
+ .author-text {
+   font-size: 0.9rem;
+   color: #555;
+ }
+
+.testi-bg {
+   position: relative;
+   overflow: hidden; /* Prevent content overflow */
+}
+
+.testimonial-arrows {
+   position: absolute;
+   bottom: 19%; 
+   left: 25%; 
+   transform: translate(-19%, 25%); 
+   z-index: 2; 
+   display: flex;
+   gap: 1rem; 
+}
+
+.testimonial-arrows > .testimonial-prev, .testimonial-arrows >.testimonial-next  {
+	background: #f0c71d;
+	width: 30px;
+	height: 30px;
+	border-radius: 50px;
+   color: #fff;
+	border: navajowhite;
+}
+
+@media screen and (max-width: 768px) {
+   .testimonial-arrows {
+      position: absolute;
+      bottom:  4%; 
+      left: 50%; 
+      transform: translate(-50%, 50%); 
+      z-index: 2; 
+      display: flex;
+      gap: 1rem; 
+   }
+   .testimonial-text {
+      font-size: 1.5rem;
+    }
+}
+
+/* testimonial end */
+
+/* top course page style */
+.top-couse .role-card {
+   border: 1px solid #dee2e6;
+   border-radius: 10px;
+   background-color: #fff;
+   padding: 1rem;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+ }
+ .top-couse .role-card img {
+   border-radius: 8px;
+   object-fit: cover;
+   width: 100%;
+   height: 180px;
+ }
+ .top-couse .role-title {
+   font-weight: 600;
+   font-size: 1rem;
+   margin-top: 0.75rem;
+ }
+ .top-couse .role-desc {
+   font-size: 0.875rem;
+   margin-top: 0.5rem;
+ }
+
+ .top-couse .filters button {
+  color: var(--light-green);
+   padding: 0.5rem 1rem;
+   border-radius: 50px;
+   margin: 0 0.5rem;
+   background-color: transparent;
+   border: 1px solid var(--light-green);
+ }
+
+ .top-couse .filters button.active {
+   background-color: var(--Dark-green);
+   color: white;
+ }
+
+ /* coure details */
+
+ .badge-skill {
+   background-color: var(--bg-secondary);
+   color: #333;
+   border-radius: 20px;
+   padding: 6px 15px;
+   margin: 5px;
+   font-family: "Inter", sans-serif;
+   font-size: 14px;
+ }
+ .course-container {
+   border: 1px solid var(--bg-secondary);
+   border-radius: 12px;
+   padding: 20px;
+   display: flex;
+ }
+ .course-box {  
+   padding: 20px;
+   border-bottom: 1px solid var(--bg-secondary);
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 1rem;
+ }
+ .course-box:last-child {
+   border-bottom: none;
+ }
+ .course-box .course-content h5 {
+   text-decoration: underline;
+ }
+ .course-price {
+  font-size: 3rem;
+  color: var(--Dark-green);
+  font-weight: 600;
+ }
+ .course-price span {
+   font-size: 1.5rem;
+   font-weight: 400;
+ }
+ .course-rating-details{
+   background-color: var(--bg-prime);
+   padding: 15px;
+   border-radius: 10px;
+   margin: 10px 0;
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+ }
+
+ .course-rating-details > div {
+   border-right: 1px solid #d6d6d6;
+ }
+.course-rating-details > div:last-child {
+   border-right: none !important;
+}
+
+.course-disscuss ul li {
+   display: flex;
+   align-items: start;
+   margin-bottom: 10px;
+}
+.course-disscuss ul li i {
+   width: 20px;
+   height: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-right: 10px;
+   margin-top: 5px;
+}
+
+@media screen and (max-width: 768px)  {
+   .course-price {
+      font-size: 2rem;  
+   }
+   
 }
