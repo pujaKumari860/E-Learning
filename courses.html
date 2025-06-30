@@ -15,7 +15,7 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
-<body>
+<body id="course">
   <div id="loader">
     <div class="spinner">
       <img src="images/loader.gif" />
@@ -25,12 +25,42 @@
 <!-- header section -->
  <div class="headerPage"></div>
 
+ <section class="top-couse">
+  <div class="container my-5 site-title" data-aos="fade-up" data-aos-duration="1000" >
+    <h3>Explore Roles</h3>
+    <p class="text-muted">Find Your Path in the World of Web Design & Development</p>
+
+    <div class="filters my-4">
+  <button class="filter-btn active" data-filter="all">All Courses</button>
+  <button class="filter-btn" data-filter="front-end">Front-End Developer</button>
+  <button class="filter-btn" data-filter="uiux">UI/UX Designer</button>
+  <button class="filter-btn" data-filter="back-end">Back-End Developer</button>
+  <button class="filter-btn" data-filter="full-stack">Full-Stack Developer</button>
+</div>
+
+<div class="row g-4" id="cardContainer"></div>
+
+  </div>
+
+ </section>
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- footer section -->
 <div class="footerPage">
   <!-- dynamic footer -->
 </div>
   <!-- footer section End-->
-
+<script type="module" src="js/dym.js"></script>
   <script src="js/file.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/jquery.min.js"></script>
