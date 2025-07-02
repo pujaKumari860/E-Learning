@@ -152,17 +152,3 @@ filterButtons.forEach(button => {
   });
 });
 
-// checkout form validation
-document.getElementById('expiry').addEventListener('input', function(e) {
-  let val = this.value.replace(/\D/g, ''); // remove non-digits
-  if (val.length >= 2) val = val.slice(0, 2) + '/' + val.slice(2, 4);
-  this.value = val.slice(0, 5);
-});
-
-document.getElementById('expiry').addEventListener('blur', function() {
-  const [mm, yy] = this.value.split('/');
-  if (mm < 1 || mm > 12 || this.value.length !== 5) {
-    alert('Invalid expiry format. Please enter in MM/YY.');
-    this.focus();
-  }
-});

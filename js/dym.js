@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (pageId === "home") {
     const sliderContainer = document.getElementById("courseSlider");
 
-    courses.forEach(course => {
+    courses.forEach((course) => {
       const courseDiv = document.createElement("div");
       courseDiv.className = "course-list-cont";
       courseDiv.style.background = `url(${course.images}) no-repeat center`;
@@ -70,7 +70,9 @@ window.addEventListener("DOMContentLoaded", () => {
     // Filter buttons
     filterButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
-        document.querySelector(".filter-btn.active")?.classList.remove("active");
+        document
+          .querySelector(".filter-btn.active")
+          ?.classList.remove("active");
         btn.classList.add("active");
 
         const filter = btn.getAttribute("data-filter");
@@ -79,26 +81,88 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
   if (pageId === "coursedetail") {
-  // Get course ID from URL like: coursedetails.html?id=2
-  const params = new URLSearchParams(window.location.search);
-  const courseId = parseInt(params.get("id"));
+    // Get course ID from URL like: coursedetails.html?id=2
+    const params = new URLSearchParams(window.location.search);
+    const courseId = parseInt(params.get("id"));
+    const enrollNow = document.getElementById("enrollNow");
 
-  // Find the course with the matching ID
-  const selectedCourse = courses.find(course => course.id === courseId);
+    // Find the course with the matching ID
+    const selectedCourse = courses.find((course) => course.id === courseId);
 
-  if (selectedCourse) {
-    // Update DOM elements with course data
-    document.getElementById("courseName").textContent = selectedCourse.name;
-    document.getElementById("courseImage").src = selectedCourse.images;
-    document.getElementById("coursePrice").innerHTML = `<span>At Just</span> ₹${selectedCourse.price}`;
-    document.getElementById("course-des").textContent = selectedCourse.description;
-    document.getElementById("log-description").textContent = selectedCourse.longDes;
-    document.getElementById("course-skill").innerHTML = `<strong>Skills you'll need:</strong> ${selectedCourse.skills}`;
+    // save selected course in localstorage
+    localStorage.setItem("selectedCourse", JSON.stringify(selectedCourse));
+
+    // get selected course from localstorage
+    const getSelectedCourse = JSON.parse(
+      localStorage.getItem("selectedCourse")
+    );
+
+    // add event listener to enrollNow button
+    enrollNow.addEventListener("click", () => {
+      // update on lodal storage enrolled multiple items course
+      const existingCourses =
+        JSON.parse(localStorage.getItem("enrolledCourse")) || [];
+      localStorage.setItem(
+        "enrolledCourse",
+        JSON.stringify([...existingCourses, getSelectedCourse])
+      );
+      window.location.href = "checkout.html";
+    });
+
+    if (getSelectedCourse) {
+      // Update DOM elements with course data
+      document.getElementById("courseName").textContent = selectedCourse.name;
+      document.getElementById("courseImage").src = selectedCourse.images;
+      document.getElementById(
+        "coursePrice"
+      ).innerHTML = `<span>At Just</span> ₹${selectedCourse.price}`;
+      document.getElementById("course-des").textContent =
+        selectedCourse.description;
+      document.getElementById("log-description").textContent =
+        selectedCourse.longDes;
+      document.getElementById(
+        "course-skill"
+      ).innerHTML = `<strong>Skills you'll need:</strong> ${selectedCourse.skills}`;
+    }
   }
-}
 
+  if (pageId === "checkout") {
+    // get enrolled course from localstorage
+    const getEnrolledCourse = JSON.parse(
+      localStorage.getItem("enrolledCourse")
+    );
+    const checkoutCourse = document.getElementById("checkoutCourse");
 
+    if (getEnrolledCourse && Array.isArray(getEnrolledCourse)) {
+      const totalPrice = getEnrolledCourse.reduce(
+        (sum, course) => sum + course.price,
+        0
+      );
 
+      checkoutCourse.innerHTML = `
+        <div class="final-cour-del" data-aos="fade-up" data-aos-duration="1000">
+          ${getEnrolledCourse
+            .map(
+              (course) => `
+            <div class="check-list-del">
+              <img src="${course.images}" alt="${course.name}" class="img-fluid">
+              <div>
+                <p>${course.name}</p>
+                <a href="#" onclick="removeEnrolledCourse(${course.id})">Remove from cart</a>
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+          <div class="border-line"></div>
+          <div class="cart-total">
+            <p>Total:</p>
+            <p>₹${totalPrice}</p>
+          </div>
+        </div>
+      `;
+    }
+
+  }
 });
