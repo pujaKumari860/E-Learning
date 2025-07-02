@@ -902,13 +902,13 @@ font-size: 14px;
        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 .check-list-del{
+   gap: 20px;
    display: flex;
-   justify-content: space-between;
    font-weight: bolder;
+   margin: 10px 0;
 }
 .check-list-del img{
    width: 100px;
-   margin-right: 30px;
    object-fit: cover;
 }
 .border-line{

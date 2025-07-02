@@ -15,7 +15,7 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
-<body>
+<body id="checkout">
   <div id="loader">
     <div class="spinner">
       <img src="images/loader.gif" />
@@ -57,21 +57,8 @@
                     </form>
                 </div>
             </div>
-            <div class="col-lg-5 offset-lg-2 col-md-6 col-sm-12">
-                <div class="final-cour-del" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="check-list-del">
-                        <img src="images/man12.png" alt="" class="img-fluid">
-                        <div >
-                        <p>Front-End Developer Professional Certificate</p>
-                        <a href="index.html">Remove from cart</a>
-                        </div>
-                    </div>
-                    <div class="border-line"></div>
-                    <div class="cart-total">
-                        <p>Total:</p>
-                        <p>₹3,999</p>
-                    </div>
-                </div>
+            <div class="col-lg-5 offset-lg-2 col-md-6 col-sm-12" id="checkoutCourse">
+             <!-- dynmic -->
             </div>
          
         </div>
@@ -84,6 +71,7 @@
 </div>
   <!-- footer section End-->
 
+  <script type="module" src="js/dym.js"></script>
   <script src="js/file.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/jquery.min.js"></script>
